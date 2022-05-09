@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  digivisio2030.api:
+    environment:
+      - ASPNETCORE_HTTPS_PORT=4434
+      - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=localhttpscertpassword123
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=./DigiVisio2030.API.https.pfx
+    ports:
+      - "4434:443"

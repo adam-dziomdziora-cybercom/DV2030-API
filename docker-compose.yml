@@ -1,0 +1,27 @@
+version: '3.4'
+
+services:
+  digivisio2030.api:
+    image: ${DOCKER_REGISTRY-}digivisio2030api
+    build:
+      context: .
+      dockerfile: API/src/Dockerfile
+ 
+  portainer:
+    container_name: portainer_container
+    image: portainer/portainer-ce
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "80:80"
