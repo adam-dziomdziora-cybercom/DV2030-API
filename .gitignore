@@ -227,6 +227,7 @@ ClientBin/
 *.dbproj.schemaview
 *.jfm
 *.pfx
+!API/src/DigiVisio2030.API.https.pfx
 *.publishsettings
 orleans.codegen.cs
 

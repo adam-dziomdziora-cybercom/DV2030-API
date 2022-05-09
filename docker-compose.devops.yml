@@ -1,8 +1,0 @@
-version: '3.4'
-
-services:
-  digivisio2030.api:
-    image: ${DOCKER_REGISTRY-}digivisio2030api
-    build:
-      context: .
-      dockerfile: API/src/Dockerfile
