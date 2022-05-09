@@ -22,6 +22,8 @@ jobs:
           password: ${{ secrets.ACR_PASSWORD }}
 
       - run: |
-          docker build . -t digivisio2030.azurecr.io/appdb:${{ github.sha }} -f ./API/src/Dockerfile
-          docker push digivisio2030.azurecr.io/appdb:${{ github.sha }}
+          docker build . -t digivisio2030.azurecr.io/digivisio2030.api:${{ github.sha }} -f ./API/src/Dockerfile
+          docker build . -t digivisio2030.azurecr.io/digivisio2030.api:latest -f ./API/src/Dockerfile
+          docker push digivisio2030.azurecr.io/digivisio2030.api:${{ github.sha }}
+          docker push digivisio2030.azurecr.io/digivisio2030.api:latest 
 
