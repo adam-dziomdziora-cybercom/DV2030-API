@@ -1,0 +1,27 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: azure/docker-login@v1
+        with:
+          login-server: digivisio2030.azurecr.io
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      - run: |
+          docker build . -t digivisio2030.azurecr.io/appdb:${{ github.sha }} -f ./API/src/Dockerfile
+          docker push digivisio2030.azurecr.io/appdb:${{ github.sha }}
+
